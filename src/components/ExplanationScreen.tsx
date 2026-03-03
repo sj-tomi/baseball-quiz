@@ -10,7 +10,7 @@ interface ExplanationScreenProps {
 
 export default function ExplanationScreen({ question, isCorrect, selectedIndex, isLast, onNext }: ExplanationScreenProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Result banner */}
       <div className={`px-5 py-6 flex flex-col items-center ${isCorrect ? 'bg-green-600' : 'bg-red-500'}`}>
         <div className="text-5xl mb-2">{isCorrect ? '⭕' : '❌'}</div>
@@ -56,9 +56,9 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
         </div>
       </div>
 
-      {/* Next button - iPhone safe area 対応 */}
+      {/* Next button - sticky で常に表示、iOS Safari ツールバー対応 */}
       <div
-        className="px-5 pt-4 pb-4 border-t border-gray-100 bg-white max-w-2xl w-full mx-auto"
+        className="sticky bottom-0 px-5 pt-4 border-t border-gray-100 bg-white w-full"
         style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}
       >
         <button

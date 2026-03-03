@@ -17,7 +17,7 @@ export default function QuizScreen({ question, currentIndex, totalQuestions, onA
   const pct = Math.round((currentIndex / totalQuestions) * 100);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Top bar */}
       <div className="px-5 pt-5 pb-4 border-b border-gray-100">
         <div className="flex items-center justify-between mb-3">

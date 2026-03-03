@@ -87,7 +87,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto min-h-screen bg-white shadow-xl relative">
+    <div className="w-full max-w-2xl mx-auto min-h-[100dvh] bg-white shadow-xl relative">
       {screen === 'start' && (
         <StartScreen
           onStart={handleStart}

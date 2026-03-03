@@ -6,7 +6,7 @@ interface StartScreenProps {
 
 export default function StartScreen({ onStart, onAdmin, totalQuestions }: StartScreenProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Hero */}
       <div className="bg-gradient-to-br from-green-600 to-green-800 px-6 pt-16 pb-12 flex flex-col items-center text-center">
         <div className="text-7xl mb-5">⚾</div>

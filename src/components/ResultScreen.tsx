@@ -18,7 +18,7 @@ export default function ResultScreen({ score, total, onRestart, onHome }: Result
   const pct = Math.round((score / total) * 100);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Header */}
       <div className="bg-gradient-to-br from-green-600 to-green-800 px-5 pt-12 pb-10 flex flex-col items-center text-center">
         <p className="text-green-200 text-sm font-medium mb-4">クイズ終了！</p>

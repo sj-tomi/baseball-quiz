@@ -104,7 +104,7 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   // ── Auth ──
   if (view === 'auth') {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-5">
+      <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-gray-50 px-5">
         <div className="w-full max-w-sm bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           <div className="text-center mb-6">
             <div className="text-4xl mb-3">🔒</div>
@@ -137,7 +137,7 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   // ── Form ──
   if (view === 'form') {
     return (
-      <div className="flex flex-col min-h-screen bg-gray-50">
+      <div className="flex flex-col min-h-[100dvh] bg-gray-50">
         <div className="bg-white border-b border-gray-100 px-5 py-4 flex items-center gap-3">
           <button className="text-gray-500 text-sm hover:text-gray-800" onClick={() => setView('list')}>← 戻る</button>
           <h2 className="font-bold text-gray-800 flex-1 text-center text-base">
@@ -241,7 +241,7 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
 
   // ── List ──
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-[100dvh] bg-gray-50">
       <div className="bg-white border-b border-gray-100 px-5 py-4 flex items-center gap-3">
         <button className="text-gray-500 text-sm hover:text-gray-800" onClick={onBack}>← ホーム</button>
         <h2 className="font-bold text-gray-800 flex-1 text-center text-base">管理画面</h2>
