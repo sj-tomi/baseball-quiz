@@ -1,4 +1,5 @@
 import type { Question } from '../types';
+import FieldDiagram from './FieldDiagram';
 
 interface ExplanationScreenProps {
   question: Question;
@@ -39,6 +40,13 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
             </div>
           )}
         </div>
+
+        {/* Field diagram (if present) */}
+        {question.diagram && (
+          <div className="rounded-2xl bg-white border border-gray-100 shadow-sm py-3 px-2">
+            <FieldDiagram {...question.diagram} />
+          </div>
+        )}
 
         {/* Explanation */}
         <div className="rounded-2xl border border-yellow-200 bg-yellow-50 p-4">

@@ -1112,3 +1112,25 @@ const additionalTactics: Question[] = [
 
 // 既存の配列にマージ
 defaultQuestions.push(...additionalTactics);
+
+// ==================== 図解デモ問題 ====================
+defaultQuestions.push({
+  id: 'q_diagram_force',
+  type: '4択',
+  category: 'ルール・基本知識',
+  question:
+    '下の図の<ruby>状況<rt>じょうきょう</rt></ruby>（1・2<ruby>塁<rt>るい</rt></ruby>にランナー、アウトなし）で内野ゴロが出た。フォースアウトを<ruby>狙<rt>ねら</rt></ruby>える<ruby>塁<rt>るい</rt></ruby>は何か所？',
+  choices: [
+    '1か所（1<ruby>塁<rt>るい</rt></ruby>のみ）',
+    '2か所（1・2<ruby>塁<rt>るい</rt></ruby>）',
+    '3か所（1・2・3<ruby>塁<rt>るい</rt></ruby>）',
+    'フォースアウトは取れない',
+  ],
+  correctIndex: 2,
+  explanation:
+    'フォースの<ruby>状態<rt>じょうたい</rt></ruby>とは「走者が次の<ruby>塁<rt>るい</rt></ruby>へ進む<ruby>義務<rt>ぎむ</rt></ruby>がある<ruby>状態<rt>じょうたい</rt></ruby>」のこと。この図では①打者が1<ruby>塁<rt>るい</rt></ruby>へ進む<ruby>義務<rt>ぎむ</rt></ruby>がある→1<ruby>塁<rt>るい</rt></ruby>でフォースアウト成立、②1<ruby>塁<rt>るい</rt></ruby>ランナーは押されて2<ruby>塁<rt>るい</rt></ruby>へ進む<ruby>義務<rt>ぎむ</rt></ruby>がある→2<ruby>塁<rt>るい</rt></ruby>でフォースアウト成立、③2<ruby>塁<rt>るい</rt></ruby>ランナーは押されて3<ruby>塁<rt>るい</rt></ruby>へ進む<ruby>義務<rt>ぎむ</rt></ruby>がある→3<ruby>塁<rt>るい</rt></ruby>でフォースアウト成立。フォースアウトはタッチが不要で、ボールを持って<ruby>塁<rt>るい</rt></ruby>を踏むだけでよいのが<ruby>特徴<rt>とくちょう</rt></ruby>！',
+  source: 'JSBB野球<ruby>規則<rt>きそく</rt></ruby>',
+  diagram: {
+    runners: [1, 2],
+  },
+});

@@ -1,4 +1,5 @@
 import type { Question } from '../types';
+import FieldDiagram from './FieldDiagram';
 
 interface QuizScreenProps {
   question: Question;
@@ -48,6 +49,15 @@ export default function QuizScreen({ question, currentIndex, totalQuestions, onA
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
       </div>
+
+      {/* Field diagram (if present) */}
+      {question.diagram && (
+        <div className="px-5 pb-2 max-w-2xl w-full mx-auto">
+          <div className="rounded-2xl bg-white border border-gray-100 shadow-sm py-3 px-2">
+            <FieldDiagram {...question.diagram} />
+          </div>
+        </div>
+      )}
 
       {/* Choices */}
       <div className="flex-1 px-5 pb-8 flex flex-col gap-3 max-w-2xl w-full mx-auto">

@@ -2,6 +2,20 @@ export type QuestionType = "4択" | "○×";
 
 export type Category = "ルール・基本知識" | "律例" | "サイン・戦術";
 
+export type BaseNumber = 1 | 2 | 3;
+export type FieldPosition = 'home' | BaseNumber | 'pitcher' | 'ss' | '2b' | 'lf' | 'cf' | 'rf';
+
+export interface FieldArrow {
+  from: FieldPosition;
+  to: 'home' | BaseNumber;
+  color?: string;
+}
+
+export interface DiagramConfig {
+  runners?: BaseNumber[];
+  arrows?: FieldArrow[];
+}
+
 export interface Question {
   id: string;
   type: QuestionType;
@@ -12,6 +26,7 @@ export interface Question {
   explanation: string;     // 解説文（ふりがな付きHTML）
   source: string;          // 出典
   year?: number;           // 導入年（ルール改正管理用）
+  diagram?: DiagramConfig; // フィールド図解（任意）
 }
 
 export type Screen = "start" | "quiz" | "explanation" | "result" | "admin";
