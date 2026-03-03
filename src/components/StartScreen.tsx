@@ -6,63 +6,70 @@ interface StartScreenProps {
 
 export default function StartScreen({ onStart, onAdmin, totalQuestions }: StartScreenProps) {
   return (
-    <div className="flex flex-col items-center justify-between min-h-screen bg-gradient-to-b from-green-800 to-green-600 px-4 py-8">
-      {/* Header */}
-      <div className="flex flex-col items-center mt-8">
-        <div className="text-6xl mb-4">⚾</div>
-        <h1 className="text-3xl font-bold text-white text-center leading-tight drop-shadow-lg">
-          <ruby>野球<rt className="text-green-200 text-xs">やきゅう</rt></ruby>
-          <ruby>クイズ<rt className="text-green-200 text-xs">くいず</rt></ruby>
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-green-600 to-green-800 px-6 pt-16 pb-12 flex flex-col items-center text-center">
+        <div className="text-7xl mb-5">⚾</div>
+        <h1 className="text-3xl font-extrabold text-white tracking-tight leading-snug">
+          野球クイズ
         </h1>
-        <p className="text-green-200 text-sm mt-2 text-center">
-          JSBB<ruby>学童部<rt className="text-green-300 text-xs">がくどうぶ</rt></ruby>
-          <ruby>公式<rt className="text-green-300 text-xs">こうしき</rt></ruby>ルール
+        <p className="mt-2 text-green-200 text-sm font-medium">
+          JSBB <ruby>学童部<rt>がくどうぶ</rt></ruby> 公式ルール
         </p>
       </div>
 
-      {/* Main card */}
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl p-6 flex flex-col gap-4">
-        <div className="text-center">
-          <p className="text-gray-600 text-sm">
-            <ruby>全国大会<rt>ぜんこくたいかい</rt></ruby>レベルの
-            <ruby>問題<rt>もんだい</rt></ruby>に<ruby>挑戦<rt>ちょうせん</rt></ruby>しよう！
-          </p>
-          <p className="text-gray-500 text-xs mt-1">
-            <ruby>問題数<rt>もんだいすう</rt></ruby>：
-            {totalQuestions >= 20 ? '20問' : `${totalQuestions}問`}
-            {totalQuestions < 20 && (
-              <span className="text-orange-500 ml-1">（20問未満のためランダム出題）</span>
-            )}
-          </p>
+      {/* Content */}
+      <div className="flex-1 px-5 py-7 flex flex-col gap-4 max-w-xl w-full mx-auto">
+        {/* Info cards */}
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { icon: '📋', label: '全', value: `${Math.min(totalQuestions, 20)}問`, sub: 'ランダム出題' },
+            { icon: '🏆', label: '', value: '4択 / ○×', sub: '2形式' },
+            { icon: '📖', label: '', value: '解説付き', sub: '全問ていねい' },
+          ].map((item, i) => (
+            <div key={i} className="bg-gray-50 rounded-2xl p-3 text-center border border-gray-100">
+              <div className="text-2xl mb-1">{item.icon}</div>
+              <div className="text-sm font-bold text-gray-800">{item.value}</div>
+              <div className="text-xs text-gray-400 mt-0.5">{item.sub}</div>
+            </div>
+          ))}
         </div>
 
-        <div className="flex flex-col gap-3 text-sm text-gray-600 bg-green-50 rounded-xl p-4">
-          <div className="flex items-center gap-2">
-            <span className="text-green-600">✓</span>
-            <span>4<ruby>択<rt>たく</rt></ruby>・○×の2<ruby>種類<rt>しゅるい</rt></ruby>の<ruby>問題形式<rt>もんだいけいしき</rt></ruby></span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-green-600">✓</span>
-            <span><ruby>正解後<rt>せいかいご</rt></ruby>に<ruby>丁寧<rt>ていねい</rt></ruby>な<ruby>解説<rt>かいせつ</rt></ruby></span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-green-600">✓</span>
-            <span>JSBB2026<ruby>年<rt>ねん</rt></ruby><ruby>最新<rt>さいしん</rt></ruby>ルール<ruby>対応<rt>たいおう</rt></ruby></span>
+        {/* Topics */}
+        <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">出題カテゴリ</p>
+          <div className="flex flex-col gap-2">
+            {[
+              { icon: '📏', label: 'ルール・基本知識', color: 'bg-blue-100 text-blue-700' },
+              { icon: '⚡', label: '律例（インフィールドフライ等）', color: 'bg-purple-100 text-purple-700' },
+              { icon: '🎯', label: 'サイン・戦術', color: 'bg-orange-100 text-orange-700' },
+            ].map((t, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${t.color}`}>{t.icon} {t.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* Start button */}
         <button
-          className="quiz-btn w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold text-lg rounded-xl py-4 shadow-md"
+          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-2xl py-4 shadow-lg shadow-green-200 mt-1"
           onClick={onStart}
         >
-          ⚾ <ruby>スタート<rt>すたーと</rt></ruby>
+          ⚾ スタート
         </button>
+
+        {totalQuestions < 20 && (
+          <p className="text-center text-xs text-orange-500">
+            ※ 現在{totalQuestions}問（20問未満のため全問出題）
+          </p>
+        )}
       </div>
 
       {/* Admin link */}
-      <div className="mb-4">
+      <div className="text-center pb-8">
         <button
-          className="text-green-200 text-xs underline underline-offset-2 opacity-70"
+          className="text-gray-300 text-xs hover:text-gray-500 transition-colors"
           onClick={onAdmin}
         >
           <ruby>管理画面<rt>かんりがめん</rt></ruby>

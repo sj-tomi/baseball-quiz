@@ -7,83 +7,78 @@ interface QuizScreenProps {
   onAnswer: (index: number) => void;
 }
 
-const categoryColors: Record<string, string> = {
-  'ルール・基本知識': 'bg-blue-100 text-blue-700',
-  '律例': 'bg-purple-100 text-purple-700',
-  'サイン・戦術': 'bg-orange-100 text-orange-700',
+const categoryBadge: Record<string, string> = {
+  'ルール・基本知識': 'bg-blue-50 text-blue-600 border-blue-200',
+  '律例': 'bg-purple-50 text-purple-600 border-purple-200',
+  'サイン・戦術': 'bg-orange-50 text-orange-600 border-orange-200',
 };
 
-export default function QuizScreen({
-  question,
-  currentIndex,
-  totalQuestions,
-  onAnswer,
-}: QuizScreenProps) {
-  const progress = ((currentIndex + 1) / totalQuestions) * 100;
+export default function QuizScreen({ question, currentIndex, totalQuestions, onAnswer }: QuizScreenProps) {
+  const pct = Math.round(((currentIndex) / totalQuestions) * 100);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Progress header */}
-      <div className="bg-green-700 px-4 pt-4 pb-3">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-white text-sm font-medium">
-            {currentIndex + 1} / {totalQuestions}<ruby>問<rt className="text-green-300 text-xs">もん</rt></ruby>
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Top bar */}
+      <div className="px-5 pt-5 pb-4 border-b border-gray-100">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm font-bold text-gray-800">
+            {currentIndex + 1}<span className="text-gray-400 font-normal"> / {totalQuestions}問</span>
           </span>
-          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[question.category] ?? 'bg-gray-100 text-gray-700'}`}>
+          <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${categoryBadge[question.category] ?? 'bg-gray-50 text-gray-600 border-gray-200'}`}>
             {question.category}
           </span>
         </div>
-        <div className="w-full bg-green-900 rounded-full h-2">
+        {/* Progress bar */}
+        <div className="w-full bg-gray-100 rounded-full h-1.5">
           <div
-            className="bg-yellow-400 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${progress}%` }}
+            className="bg-green-500 h-1.5 rounded-full transition-all duration-500"
+            style={{ width: `${pct}%` }}
           />
         </div>
       </div>
 
-      {/* Question type badge */}
-      <div className="px-4 pt-4">
-        <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full border border-green-300">
-          {question.type}
-        </span>
-      </div>
-
-      {/* Question text */}
-      <div className="px-4 pt-3 pb-4 flex-1">
+      {/* Question */}
+      <div className="px-5 pt-5 pb-3 max-w-2xl w-full mx-auto">
+        <div className="inline-flex items-center gap-1.5 mb-3">
+          <span className="text-xs font-bold text-white bg-green-600 px-2.5 py-0.5 rounded-full">
+            {question.type}
+          </span>
+        </div>
         <div
-          className="bg-white rounded-2xl shadow-sm p-5 text-gray-800 text-base leading-relaxed border border-gray-100"
+          className="text-gray-900 text-[1.05rem] leading-relaxed font-medium"
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
       </div>
 
       {/* Choices */}
-      <div className="px-4 pb-8 flex flex-col gap-3">
+      <div className="flex-1 px-5 pb-8 flex flex-col gap-2.5 max-w-2xl w-full mx-auto">
         {question.choices.map((choice, i) => {
-          const isOX = question.type === '○×';
-          const choiceStyle = isOX
-            ? i === 0
-              ? 'border-green-400 bg-green-50 text-green-800'
-              : 'border-red-400 bg-red-50 text-red-800'
-            : 'border-gray-200 bg-white text-gray-800';
-
+          if (question.type === '○×') {
+            const isCircle = i === 0;
+            return (
+              <button
+                key={i}
+                className={`tap-btn flex items-center justify-center gap-3 rounded-2xl border-2 py-5 font-bold text-2xl transition-all
+                  ${isCircle
+                    ? 'border-green-300 bg-green-50 text-green-700 hover:bg-green-100 hover:border-green-400'
+                    : 'border-red-300 bg-red-50 text-red-600 hover:bg-red-100 hover:border-red-400'
+                  }`}
+                onClick={() => onAnswer(i)}
+              >
+                <span className="text-3xl">{choice}</span>
+              </button>
+            );
+          }
           return (
             <button
               key={i}
-              className={`quiz-btn w-full flex items-center gap-3 rounded-xl border-2 px-4 py-3 font-medium text-left shadow-sm hover:shadow-md active:opacity-80 ${choiceStyle}`}
+              className="tap-btn flex items-center gap-3 rounded-2xl border-2 border-gray-200 bg-white hover:border-green-400 hover:bg-green-50 px-4 py-3.5 text-left text-gray-800 text-sm font-medium shadow-sm hover:shadow-md"
               onClick={() => onAnswer(i)}
             >
-              {isOX ? (
-                <span className={`text-2xl font-bold ${i === 0 ? 'text-green-600' : 'text-red-600'}`}>
-                  {choice}
-                </span>
-              ) : (
-                <>
-                  <span className="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full bg-green-100 text-green-800 text-sm font-bold">
-                    {i + 1}
-                  </span>
-                  <span className="text-sm leading-snug">{choice}</span>
-                </>
-              )}
+              <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 text-xs font-bold">
+                {i + 1}
+              </span>
+              <span className="leading-snug">{choice}</span>
             </button>
           );
         })}

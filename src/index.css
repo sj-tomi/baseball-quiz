@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'Yu Gothic', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  background-color: #f0fdf4;
+  background: #f1f5f9;
   min-height: 100vh;
 }
 
@@ -19,17 +18,20 @@ body {
 }
 
 ruby rt {
-  font-size: 0.55em;
-  color: #555;
+  font-size: 0.5em;
+  color: #64748b;
+  font-weight: normal;
 }
 
-.quiz-btn {
-  min-height: 48px;
+.tap-btn {
+  min-height: 52px;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-.quiz-btn:active {
+.tap-btn:active {
   transform: scale(0.97);
+  opacity: 0.85;
 }
