@@ -55,7 +55,7 @@ export default function ResultScreen({ score, total, onRestart, onHome }: Result
         </div>
 
         <button
-          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-base rounded-2xl py-4 shadow-md shadow-green-100"
+          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-2xl py-4 shadow-md shadow-green-100"
           onClick={onRestart}
         >
           ⚾ もう一度挑戦する

@@ -24,16 +24,18 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4 flex flex-col gap-3">
           <div>
             <p className="text-xs text-gray-400 font-medium mb-1">あなたの答え</p>
-            <p className={`font-bold text-sm ${isCorrect ? 'text-green-700' : 'text-red-500'}`}>
-              {question.choices[selectedIndex]}
-            </p>
+            <p
+              className={`font-bold text-base ${isCorrect ? 'text-green-700' : 'text-red-500'}`}
+              dangerouslySetInnerHTML={{ __html: question.choices[selectedIndex] }}
+            />
           </div>
           {!isCorrect && (
             <div className="pt-3 border-t border-gray-200">
               <p className="text-xs text-gray-400 font-medium mb-1">正解</p>
-              <p className="font-bold text-sm text-green-700">
-                {question.choices[question.correctIndex]}
-              </p>
+              <p
+                className="font-bold text-base text-green-700"
+                dangerouslySetInnerHTML={{ __html: question.choices[question.correctIndex] }}
+              />
             </div>
           )}
         </div>
@@ -44,20 +46,23 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
             <span>📖</span> 解説
           </p>
           <div
-            className="text-gray-700 text-sm leading-loose"
+            className="text-gray-700 text-base leading-loose"
             dangerouslySetInnerHTML={{ __html: question.explanation }}
           />
-          <p className="text-xs text-gray-400 mt-3 pt-3 border-t border-yellow-200">
-            出典：{question.source}
+          <div className="text-xs text-gray-400 mt-3 pt-3 border-t border-yellow-200">
+            出典：<span dangerouslySetInnerHTML={{ __html: question.source }} />
             {question.year && <span className="ml-1">（{question.year}年）</span>}
-          </p>
+          </div>
         </div>
       </div>
 
-      {/* Next button */}
-      <div className="px-5 py-4 border-t border-gray-100 bg-white max-w-2xl w-full mx-auto">
+      {/* Next button - iPhone safe area 対応 */}
+      <div
+        className="px-5 pt-4 pb-4 border-t border-gray-100 bg-white max-w-2xl w-full mx-auto"
+        style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}
+      >
         <button
-          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-base rounded-2xl py-4 shadow-md shadow-green-100"
+          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-2xl py-4 shadow-md shadow-green-100"
           onClick={onNext}
         >
           {isLast ? '結果を見る →' : '次の問題へ →'}
