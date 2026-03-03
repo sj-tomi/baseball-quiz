@@ -14,7 +14,9 @@ export function useQuiz(allQuestions: Question[]) {
   const [session, setSession] = useState<QuizSession | null>(null);
 
   const startSession = useCallback(() => {
-    const shuffled = shuffleArray(allQuestions);
+    const demo = allQuestions.find(q => q.id === 'q_diagram_force');
+    const rest = shuffleArray(allQuestions.filter(q => q.id !== 'q_diagram_force'));
+    const shuffled = demo ? [demo, ...rest] : rest;
     const selected = shuffled.slice(0, Math.min(20, shuffled.length));
     setSession({
       questions: selected,
