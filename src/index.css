@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: #f0fdf4;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+ruby rt {
+  font-size: 0.55em;
+  color: #555;
+}
+
+.quiz-btn {
+  min-height: 48px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quiz-btn:active {
+  transform: scale(0.97);
+}
