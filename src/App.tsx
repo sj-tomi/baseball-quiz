@@ -9,9 +9,18 @@ import ResultScreen from './components/ResultScreen';
 import AdminScreen from './components/AdminScreen';
 
 const STORAGE_KEY = 'baseball_quiz_questions';
+const VERSION_KEY = 'baseball_quiz_version';
+// デフォルト問題を更新したらこの番号を上げる
+const QUESTIONS_VERSION = '2';
 
 function loadQuestions(): Question[] {
   try {
+    const storedVersion = localStorage.getItem(VERSION_KEY);
+    if (storedVersion !== QUESTIONS_VERSION) {
+      // バージョンが違う場合はデフォルト問題にリセット
+      localStorage.removeItem(STORAGE_KEY);
+      return defaultQuestions;
+    }
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed: Question[] = JSON.parse(stored);
@@ -24,6 +33,7 @@ function loadQuestions(): Question[] {
 }
 
 function saveQuestions(questions: Question[]) {
+  localStorage.setItem(VERSION_KEY, QUESTIONS_VERSION);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(questions));
 }
 
