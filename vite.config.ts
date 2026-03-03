@@ -5,4 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // GitHub Pages 用: リポジトリ名をベースパスに設定
+  base: process.env.VITE_BASE_URL ?? '/',
 })
