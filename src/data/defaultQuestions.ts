@@ -185,6 +185,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       '満塁でなくても、1塁にランナーがいるときに四球が出ると「押し出し」でランナーは強制的に2塁へ進む。フォースの<ruby>状態<rt>じょうたい</rt></ruby>が続く。満塁なら3塁ランナーも本塁へ進んで1点が入る。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [1] },
   },
   {
     id: 'q13',
@@ -234,6 +235,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'ボークが<ruby>宣告<rt>せんこく</rt></ruby>されると、塁上の全ランナーが1つずつ進<ruby>塁<rt>るい</rt></ruby>する。打者にはボールが1つ加わる。投手がセットポジションで静止しなかったり、投球<ruby>途中<rt>とちゅう</rt></ruby>で止めた場合などに<ruby>宣告<rt>せんこく</rt></ruby>される。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [1, 3] },
   },
   {
     id: 'q16',
@@ -265,6 +267,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       '振り逃げは「1<ruby>塁<rt>るい</rt></ruby>が空いているとき（アウトカウント問わず）」または「2アウトのとき（1<ruby>塁<rt>るい</rt></ruby>にランナーがいても）」に<ruby>捕手<rt>ほしゅ</rt></ruby>が3ストライク目を正規に<ruby>捕球<rt>ほきゅう</rt></ruby>しなかった場合に成立。1塁にランナーがいて0・1アウトのときは成立しない。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [2, 3] },
   },
   {
     id: 'q18',
@@ -321,7 +324,7 @@ export const defaultQuestions: Question[] = [
       '走者にタッチしてアウトにすること',
       '走者が<ruby>塁<rt>るい</rt></ruby>に進む<ruby>義務<rt>ぎむ</rt></ruby>があるとき、その<ruby>塁<rt>るい</rt></ruby>に触れてアウトにすること',
       '3アウト後にさらにアウトを取ること',
-      'タッグアップでアウトにすること',
+      'タッチアップでアウトにすること',
     ],
     correctIndex: 1,
     explanation:
@@ -356,8 +359,9 @@ export const defaultQuestions: Question[] = [
     ],
     correctIndex: 2,
     explanation:
-      '犠牲フライは0アウトまたは1アウトのとき、外野フライを<ruby>捕球<rt>ほきゅう</rt></ruby>した後にランナーがタッグアップして生還した場合に記録される。2アウトでは成立しない。打者の打数には含まれない。',
+      '犠牲フライは0アウトまたは1アウトのとき、外野フライを<ruby>捕球<rt>ほきゅう</rt></ruby>した後にランナーがタッチアップして生還した場合に記録される。2アウトでは成立しない。打者の打数には含まれない。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
   {
     id: 'q24',
@@ -396,7 +400,7 @@ export const defaultQuestions: Question[] = [
     category: 'ルール・基本知識',
     year: 2024,
     question:
-      'タッグアップとはどんなプレーか？',
+      'タッチアップとはどんなプレーか？',
     choices: [
       '走者が<ruby>塁<rt>るい</rt></ruby>を踏まずに進<ruby>塁<rt>るい</rt></ruby>すること',
       '外野フライを<ruby>捕球<rt>ほきゅう</rt></ruby>された後に、走者が元の<ruby>塁<rt>るい</rt></ruby>に戻ってから進<ruby>塁<rt>るい</rt></ruby>すること',
@@ -405,8 +409,9 @@ export const defaultQuestions: Question[] = [
     ],
     correctIndex: 1,
     explanation:
-      'タッグアップは外野フライが<ruby>捕球<rt>ほきゅう</rt></ruby>された瞬間に、走者が元の<ruby>塁<rt>るい</rt></ruby>（またはそれ以降の地点）に触れてから次の<ruby>塁<rt>るい</rt></ruby>を狙うプレー。<ruby>捕球<rt>ほきゅう</rt></ruby>前にスタートを切ると守備側のアピールでアウトになる。',
+      'タッチアップは外野フライが<ruby>捕球<rt>ほきゅう</rt></ruby>された瞬間に、走者が元の<ruby>塁<rt>るい</rt></ruby>（またはそれ以降の地点）に触れてから次の<ruby>塁<rt>るい</rt></ruby>を狙うプレー。<ruby>捕球<rt>ほきゅう</rt></ruby>前にスタートを切ると守備側のアピールでアウトになる。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
   {
     id: 'q27',
@@ -423,8 +428,9 @@ export const defaultQuestions: Question[] = [
     ],
     correctIndex: 1,
     explanation:
-      'アピールプレーは守備側が<ruby>審判<rt>しんぱん</rt></ruby>に走者の<ruby>塁<rt>るい</rt></ruby>空過やタッグアップ不履行などの違反を指摘し、アウトを要求するプレー。次のプレーが始まる前（投球前など）に行う必要がある。',
+      'アピールプレーは守備側が<ruby>審判<rt>しんぱん</rt></ruby>に走者の<ruby>塁<rt>るい</rt></ruby>空過やタッチアップ不履行などの違反を指摘し、アウトを要求するプレー。次のプレーが始まる前（投球前など）に行う必要がある。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [3] },
   },
   {
     id: 'q28',
@@ -489,6 +495,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'インフィールドフライはランナー1・2<ruby>塁<rt>るい</rt></ruby>または<ruby>満塁<rt>まんるい</rt></ruby>の状況で、0アウトか1アウトのとき、内野手が普通の守備をすれば<ruby>捕球<rt>ほきゅう</rt></ruby>できるフライに<ruby>適用<rt>てきよう</rt></ruby>される。守備側の故意落球によるダブルプレーを防ぐためのルール。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [1, 2] },
   },
   {
     id: 'q32',
@@ -500,8 +507,9 @@ export const defaultQuestions: Question[] = [
     choices: ['○', '×'],
     correctIndex: 1,
     explanation:
-      'インフィールドフライが<ruby>宣告<rt>せんこく</rt></ruby>されるとバッターは即アウトになるが、ランナーは自由に走ることができる。ただしフライが<ruby>捕球<rt>ほきゅう</rt></ruby>された場合はタッグアップが必要。',
+      'インフィールドフライが<ruby>宣告<rt>せんこく</rt></ruby>されるとバッターは即アウトになるが、ランナーは自由に走ることができる。ただしフライが<ruby>捕球<rt>ほきゅう</rt></ruby>された場合はタッチアップが必要。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [1, 2] },
   },
   {
     id: 'q33',
@@ -551,6 +559,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'コリジョンルール（本塁での<ruby>衝突防止<rt>しょうとつぼうし</rt></ruby>規則）により、<ruby>捕手<rt>ほしゅ</rt></ruby>はボールを保持していない状態で走者の走路を塞いではならない。違反するとオブストラクション（走<ruby>塁<rt>るい</rt></ruby><ruby>妨害<rt>ぼうがい</rt></ruby>）が<ruby>宣告<rt>せんこく</rt></ruby>される。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
   {
     id: 'q36',
@@ -582,6 +591,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       '走者が内野を通過していないフェアの打球に当たると、その走者はアウト。ただし内野手（投手を除く）を通過した後の打球に当たった場合はインプレーが続く。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [2] },
   },
   {
     id: 'q38',
@@ -600,6 +610,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'タイムプレーは、フォース以外の第3アウトが成立したとき、それより前に走者が本<ruby>塁<rt>るい</rt></ruby>に生還していれば得点が認められるかどうかを判断するプレー。第3アウトと生還のどちらが先かが重要。',
     source: '公認野球<ruby>規則<rt>きそく</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
 
   // ==================== サイン・戦術 ====================
@@ -620,6 +631,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'ヒットエンドランはランナーがスタートを切ると同時にバッターが必ず打つ約束のプレー。バッターが空振りしてもランナーは走り続けるしかない。<ruby>捕手<rt>ほしゅ</rt></ruby>の送球と走者の速さの勝負になる。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [1], arrows: [{ from: 1, to: 2 }] },
   },
   {
     id: 'q40',
@@ -633,6 +645,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'スクイズはランナーが投球と同時にスタートを切り、バッターがバントをするプレー。ランナーが先に走り出すことがスクイズの核心であり、バントのタイミングが合わなければランナーがタッグアウトになるリスクがある。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
   {
     id: 'q41',
@@ -651,6 +664,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       'ダブルスチール（重<ruby>盗<rt>とう</rt></ruby>）は2人のランナーが同時に盗<ruby>塁<rt>るい</rt></ruby>を試みるプレー。特に1・3塁での重<ruby>盗<rt>とう</rt></ruby>は、<ruby>捕手<rt>ほしゅ</rt></ruby>がどちらに送球するかを迷わせる効果がある。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [1, 3], arrows: [{ from: 1, to: 2 }, { from: 3, to: 'home' }] },
   },
   {
     id: 'q42',
@@ -798,6 +812,7 @@ export const defaultQuestions: Question[] = [
     explanation:
       '1・3<ruby>塁<rt>るい</rt></ruby>でダブルスチールを狙われた場合、<ruby>捕手<rt>ほしゅ</rt></ruby>がそのまま2<ruby>塁<rt>るい</rt></ruby>に送球すると3<ruby>塁<rt>るい</rt></ruby>ランナーが生還しやすい。投手への返球（ピッチャー返し）で3<ruby>塁<rt>るい</rt></ruby>ランナーを止め、1<ruby>塁<rt>るい</rt></ruby>ランナーの<ruby>判断<rt>はんだん</rt></ruby>を迷わせる方法が基本。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [1, 3] },
   },
 ];
 
@@ -836,6 +851,7 @@ const additionalTactics: Question[] = [
     explanation:
       '前進守備は1点も与えられない場面（3<ruby>塁<rt>るい</rt></ruby>にランナーがいる場合など）で内野手が前に守り、本<ruby>塁<rt>るい</rt></ruby>でのタッグアウトを狙う守備<ruby>戦術<rt>せんじゅつ</rt></ruby>。ヒットの可能性は上がるが、本<ruby>塁<rt>るい</rt></ruby>をアウトにできる可能性も上がる。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [3], arrows: [{ from: 3, to: 'home' }] },
   },
   {
     id: 'q53',
@@ -894,6 +910,7 @@ const additionalTactics: Question[] = [
     explanation:
       '1・3<ruby>塁<rt>るい</rt></ruby>の場面で1<ruby>塁<rt>るい</rt></ruby>ランナーが走ると、守備側は「2<ruby>塁<rt>るい</rt></ruby>に投げれば3<ruby>塁<rt>るい</rt></ruby>ランナーが生還するかも」と悩む。この守備側の<ruby>判断<rt>はんだん</rt></ruby>ミスを誘って3<ruby>塁<rt>るい</rt></ruby>ランナーをホームに返すのが狙い。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [1, 3], arrows: [{ from: 1, to: 2 }, { from: 3, to: 'home' }] },
   },
   {
     id: 'q57',
@@ -1061,6 +1078,7 @@ const additionalTactics: Question[] = [
     explanation:
       'バントシフトは攻撃側がバントをしてくると<ruby>予想<rt>よそう</rt></ruby>される場面（特にランナーが1<ruby>塁<rt>るい</rt></ruby>や1・2<ruby>塁<rt>るい</rt></ruby>のとき）に三塁手や一塁手が前に出て構える守備<ruby>陣形<rt>じんけい</rt></ruby>。バントを処理して先の<ruby>塁<rt>るい</rt></ruby>でアウトにしやすくする。',
     source: '野球戦術の<ruby>基本<rt>きほん</rt></ruby>',
+    diagram: { runners: [1, 2] },
   },
   {
     id: 'q68',
