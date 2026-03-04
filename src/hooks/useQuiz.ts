@@ -14,8 +14,20 @@ export function useQuiz(allQuestions: Question[]) {
   const [session, setSession] = useState<QuizSession | null>(null);
 
   const startSession = useCallback(() => {
-    const shuffled = shuffleArray(allQuestions);
-    const selected = shuffled.slice(0, Math.min(20, shuffled.length));
+    const total = Math.min(20, allQuestions.length);
+    const minDiagram = Math.ceil(total / 3); // 1/3以上は図解問題
+
+    const withDiagram = shuffleArray(allQuestions.filter((q) => q.diagram));
+    const withoutDiagram = shuffleArray(allQuestions.filter((q) => !q.diagram));
+
+    const diagramCount = Math.min(minDiagram, withDiagram.length);
+    const restCount = total - diagramCount;
+
+    const selected = shuffleArray([
+      ...withDiagram.slice(0, diagramCount),
+      ...withoutDiagram.slice(0, restCount),
+    ]);
+
     setSession({
       questions: selected,
       currentIndex: 0,
