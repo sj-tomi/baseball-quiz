@@ -15,7 +15,12 @@ export function useQuiz(allQuestions: Question[]) {
 
   const startSession = useCallback(() => {
     const shuffled = shuffleArray(allQuestions);
-    const selected = shuffled.slice(0, Math.min(20, shuffled.length));
+    const selected = shuffled.slice(0, Math.min(20, shuffled.length)).map((q) => {
+      if (q.choices.length <= 2) return q; // ○×はシャッフルしない
+      const correctText = q.choices[q.correctIndex];
+      const shuffledChoices = shuffleArray(q.choices);
+      return { ...q, choices: shuffledChoices, correctIndex: shuffledChoices.indexOf(correctText) };
+    });
     setSession({
       questions: selected,
       currentIndex: 0,
