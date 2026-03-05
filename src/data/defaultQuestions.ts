@@ -476,7 +476,7 @@ export const defaultQuestions: Question[] = [
     "type": "4択",
     "category": "ルール・基本知識",
     "year": 2024,
-    "question": "「故意四球」（申告敬遠）とは何か？",
+    "question": "申告敬遠とは何か？",
     "choices": [
       "投手が実際に4球投げて四球を与えること",
       "守備側が審判に申告するだけで、投球なしに四球を与えること",
@@ -484,7 +484,7 @@ export const defaultQuestions: Question[] = [
       "打者側が申告して受け取ること"
     ],
     "correctIndex": 1,
-    "explanation": "現在の規則では、守備チームの監督が審判に申告するだけで、実際の投球なしに故意四球（申告敬遠）を与えることができる。試合を早く進めるために導入された。",
+    "explanation": "現在の規則では、守備チームの監督が審判に申告するだけで、実際の投球なしに申告敬遠を与えることができる。試合を早く進めるために導入された。",
     "source": "公認野球規則"
   },
   {
@@ -548,7 +548,7 @@ export const defaultQuestions: Question[] = [
     "type": "4択",
     "category": "律例",
     "year": 2024,
-    "question": "2ストライク後にバントをしてファウルになった場合の<ruby>裁定<rt>さいてい</rt></ruby>は？",
+    "question": "2ストライク後にバントをしてファウルになった場合はどうなる？",
     "choices": [
       "ファウルでカウントなし",
       "三振アウト",
