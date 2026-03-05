@@ -11,9 +11,16 @@ import {
   REPO_NAME,
 } from '../lib/github';
 
-// パスワードは固定
-const ADMIN_PASSWORD = 'kndreams23';
+const ADMIN_PASSWORD_HASH = import.meta.env.VITE_ADMIN_PASSWORD_HASH as string;
 const SESSION_AUTH_KEY = 'baseball_quiz_admin_auth';
+
+async function hashPassword(password: string): Promise<string> {
+  const encoded = new TextEncoder().encode(password);
+  const buffer = await crypto.subtle.digest('SHA-256', encoded);
+  return Array.from(new Uint8Array(buffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
 
 interface AdminScreenProps {
   questions: Question[];
@@ -55,8 +62,9 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
   const [syncError, setSyncError] = useState('');
 
-  const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) {
+  const handleLogin = async () => {
+    const hash = await hashPassword(password);
+    if (hash === ADMIN_PASSWORD_HASH) {
       sessionStorage.setItem(SESSION_AUTH_KEY, 'ok');
       setView('list');
       setAuthError('');
