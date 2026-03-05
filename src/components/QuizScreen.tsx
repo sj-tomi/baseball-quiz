@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Question } from '../types';
 import FieldDiagram from './FieldDiagram';
 
@@ -6,6 +7,7 @@ interface QuizScreenProps {
   currentIndex: number;
   totalQuestions: number;
   onAnswer: (index: number) => void;
+  onQuit: () => void;
 }
 
 const categoryBadge: Record<string, string> = {
@@ -14,14 +16,22 @@ const categoryBadge: Record<string, string> = {
   'サイン・戦術': 'bg-orange-50 text-orange-600 border-orange-200',
 };
 
-export default function QuizScreen({ question, currentIndex, totalQuestions, onAnswer }: QuizScreenProps) {
+export default function QuizScreen({ question, currentIndex, totalQuestions, onAnswer, onQuit }: QuizScreenProps) {
   const pct = Math.round((currentIndex / totalQuestions) * 100);
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Top bar */}
       <div className="px-5 pt-5 pb-4 border-b border-gray-100">
         <div className="flex items-center justify-between mb-3">
+          <button
+            className="text-gray-400 hover:text-gray-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-lg leading-none"
+            onClick={() => setShowQuitConfirm(true)}
+            aria-label="クイズをやめる"
+          >
+            ✕
+          </button>
           <span className="text-base font-bold text-gray-800">
             {currentIndex + 1}<span className="text-gray-400 font-normal text-sm"> / {totalQuestions}問</span>
           </span>
@@ -98,6 +108,29 @@ export default function QuizScreen({ question, currentIndex, totalQuestions, onA
           );
         })}
       </div>
+
+      {showQuitConfirm && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-6">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-xs shadow-xl">
+            <p className="text-base font-bold text-gray-800 text-center mb-1">クイズをやめますか？</p>
+            <p className="text-sm text-gray-400 text-center mb-5">途中の結果は残りません</p>
+            <div className="flex gap-3">
+              <button
+                className="flex-1 py-3 border border-gray-200 rounded-xl text-gray-600 font-medium text-sm hover:bg-gray-50"
+                onClick={() => setShowQuitConfirm(false)}
+              >
+                続ける
+              </button>
+              <button
+                className="flex-1 py-3 bg-red-500 text-white rounded-xl font-bold text-sm hover:bg-red-600"
+                onClick={onQuit}
+              >
+                やめる
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

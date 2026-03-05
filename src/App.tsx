@@ -62,6 +62,7 @@ export default function App() {
   };
 
   const handleHome = () => {
+    sessionStorage.removeItem('baseball_quiz_session');
     setScreen('start');
   };
 
@@ -81,6 +82,7 @@ export default function App() {
           currentIndex={session!.currentIndex}
           totalQuestions={totalQuestions}
           onAnswer={handleAnswer}
+          onQuit={handleHome}
         />
       )}
 
@@ -94,6 +96,7 @@ export default function App() {
             selectedIndex={session.selectedIndex}
             isLast={session.currentIndex + 1 >= session.questions.length}
             onNext={handleNext}
+            onQuit={handleHome}
           />
         )}
 

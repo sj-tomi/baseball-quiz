@@ -7,9 +7,10 @@ interface ExplanationScreenProps {
   selectedIndex: number;
   isLast: boolean;
   onNext: () => void;
+  onQuit: () => void;
 }
 
-export default function ExplanationScreen({ question, isCorrect, selectedIndex, isLast, onNext }: ExplanationScreenProps) {
+export default function ExplanationScreen({ question, isCorrect, selectedIndex, isLast, onNext, onQuit }: ExplanationScreenProps) {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Result banner */}
@@ -69,12 +70,22 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
         className="sticky bottom-0 px-5 pt-4 border-t border-gray-100 bg-white w-full"
         style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}
       >
-        <button
-          className="tap-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-2xl py-4 shadow-md shadow-green-100"
-          onClick={onNext}
-        >
-          {isLast ? '結果を見る →' : '次の問題へ →'}
-        </button>
+        <div className="flex gap-3">
+          {!isLast && (
+            <button
+              className="tap-btn py-4 px-4 border border-gray-200 text-gray-500 font-medium text-sm rounded-2xl hover:bg-gray-50"
+              onClick={onQuit}
+            >
+              やめる
+            </button>
+          )}
+          <button
+            className="tap-btn flex-1 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-2xl py-4 shadow-md shadow-green-100"
+            onClick={onNext}
+          >
+            {isLast ? '結果を見る →' : '次の問題へ →'}
+          </button>
+        </div>
       </div>
     </div>
   );
