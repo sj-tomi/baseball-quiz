@@ -71,29 +71,37 @@ async function getFileData(token: string, branch: string, path: string): Promise
   return { sha: data.sha, content: fromBase64(data.content) };
 }
 
-async function putFile(
+async function putFileWithRetry(
   token: string,
   branch: string,
   path: string,
   content: string,
-  sha: string,
-  message: string
+  message: string,
+  maxRetries = 3
 ): Promise<void> {
-  const res = await fetch(
-    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
-    {
-      method: 'PUT',
-      headers: {
-        Authorization: `token ${token}`,
-        Accept: 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message, content: toBase64(content), sha, branch }),
-    }
-  );
-  if (!res.ok) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const { sha } = await getFileData(token, branch, path);
+    const res = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message, content: toBase64(content), sha, branch }),
+      }
+    );
+    if (res.ok) return;
     const err = await res.json().catch(() => ({})) as { message?: string };
-    throw new Error(err.message ?? `ファイル更新失敗: ${path}`);
+    const msg = err.message ?? '';
+    // SHAミスマッチなら最終試行以外はリトライ
+    if (attempt < maxRetries && (msg.includes('does not match') || msg.includes('sha'))) {
+      await new Promise(r => setTimeout(r, 500 * (attempt + 1)));
+      continue;
+    }
+    throw new Error(msg || `ファイル更新失敗: ${path}`);
   }
 }
 
@@ -115,11 +123,8 @@ export async function syncQuestionsToGitHub(
     `const QUESTIONS_VERSION = '${newVersion}'`
   );
 
-  // PUT直前に最新SHAを再取得してからコミット（SHAミスマッチ防止）
-  const latestQuestions = await getFileData(token, branch, QUESTIONS_FILE);
-  await putFile(token, branch, QUESTIONS_FILE, newQuestionsContent, latestQuestions.sha, '管理画面から問題を更新');
+  await putFileWithRetry(token, branch, QUESTIONS_FILE, newQuestionsContent, '管理画面から問題を更新');
   if (newAppContent !== appFile.content) {
-    const latestApp = await getFileData(token, branch, APP_FILE);
-    await putFile(token, branch, APP_FILE, newAppContent, latestApp.sha, `QUESTIONS_VERSIONを${newVersion}に更新`);
+    await putFileWithRetry(token, branch, APP_FILE, newAppContent, `QUESTIONS_VERSIONを${newVersion}に更新`);
   }
 }
