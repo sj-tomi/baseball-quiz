@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Question, Screen } from './types';
 import { defaultQuestions } from './data/defaultQuestions';
 import { useQuiz } from './hooks/useQuiz';
@@ -9,8 +9,20 @@ import ResultScreen from './components/ResultScreen';
 import AdminScreen from './components/AdminScreen';
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('start');
+  const [screen, setScreen] = useState<Screen>(() => {
+    const saved = sessionStorage.getItem('baseball_quiz_screen') as Screen | null;
+    const quizScreens: Screen[] = ['quiz', 'explanation', 'result'];
+    // Only restore quiz screens if a session exists
+    if (saved && quizScreens.includes(saved)) {
+      return sessionStorage.getItem('baseball_quiz_session') ? saved : 'start';
+    }
+    return 'start';
+  });
   const [questions, setQuestions] = useState<Question[]>(defaultQuestions);
+
+  useEffect(() => {
+    sessionStorage.setItem('baseball_quiz_screen', screen);
+  }, [screen]);
 
   const {
     currentQuestion,

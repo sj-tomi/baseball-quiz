@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { Question, QuestionType, Category } from '../types';
 import FieldDiagram from './FieldDiagram';
 import {
@@ -54,6 +54,8 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
   const [formData, setFormData] = useState<Omit<Question, 'id'>>(emptyQuestion());
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [undoItem, setUndoItem] = useState<{ question: Question; index: number } | null>(null);
+  const undoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // GitHub連携
   const [githubToken, setGithubTokenState] = useState(getGithubToken);
@@ -139,10 +141,25 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   };
 
   const handleDelete = (id: string) => {
+    const index = questions.findIndex(q => q.id === id);
+    const deleted = questions[index];
     const updated = questions.filter(q => q.id !== id);
     onQuestionsChange(updated);
     syncToGitHub(updated);
     setDeleteConfirm(null);
+    if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
+    setUndoItem({ question: deleted, index });
+    undoTimerRef.current = setTimeout(() => setUndoItem(null), 5000);
+  };
+
+  const handleUndo = () => {
+    if (!undoItem) return;
+    if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
+    const restored = [...questions];
+    restored.splice(undoItem.index, 0, undoItem.question);
+    onQuestionsChange(restored);
+    syncToGitHub(restored);
+    setUndoItem(null);
   };
 
   const handleSaveGithubSettings = () => {
@@ -427,6 +444,15 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
           </div>
         )}
       </div>
+
+      {undoItem && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm rounded-2xl px-4 py-3 flex items-center gap-3 shadow-lg z-50 whitespace-nowrap">
+          <span>問題を削除しました</span>
+          <button className="text-green-400 font-bold hover:text-green-300" onClick={handleUndo}>
+            元に戻す
+          </button>
+        </div>
+      )}
     </div>
   );
 }

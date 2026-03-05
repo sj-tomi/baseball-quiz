@@ -1,5 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { Question, QuizSession } from '../types';
+
+const SESSION_STORAGE_KEY = 'baseball_quiz_session';
 
 function shuffleArray<T>(array: T[]): T[] {
   const arr = [...array];
@@ -11,7 +13,22 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function useQuiz(allQuestions: Question[]) {
-  const [session, setSession] = useState<QuizSession | null>(null);
+  const [session, setSession] = useState<QuizSession | null>(() => {
+    try {
+      const saved = sessionStorage.getItem(SESSION_STORAGE_KEY);
+      return saved ? (JSON.parse(saved) as QuizSession) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    if (session) {
+      sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
+    } else {
+      sessionStorage.removeItem(SESSION_STORAGE_KEY);
+    }
+  }, [session]);
 
   const startSession = useCallback(() => {
     const total = Math.min(20, allQuestions.length);
