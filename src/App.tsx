@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { Question, Screen } from './types';
 import { defaultQuestions } from './data/defaultQuestions';
 import { useQuiz } from './hooks/useQuiz';
@@ -8,38 +8,9 @@ import ExplanationScreen from './components/ExplanationScreen';
 import ResultScreen from './components/ResultScreen';
 import AdminScreen from './components/AdminScreen';
 
-const STORAGE_KEY = 'baseball_quiz_questions';
-const VERSION_KEY = 'baseball_quiz_version';
-// デフォルト問題を更新したらこの番号を上げる
-const QUESTIONS_VERSION = '1772678929146';
-
-function loadQuestions(): Question[] {
-  try {
-    const storedVersion = localStorage.getItem(VERSION_KEY);
-    if (storedVersion !== QUESTIONS_VERSION) {
-      // バージョンが違う場合はデフォルト問題にリセット
-      localStorage.removeItem(STORAGE_KEY);
-      return defaultQuestions;
-    }
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed: Question[] = JSON.parse(stored);
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-    }
-  } catch {
-    // ignore parse errors
-  }
-  return defaultQuestions;
-}
-
-function saveQuestions(questions: Question[]) {
-  localStorage.setItem(VERSION_KEY, QUESTIONS_VERSION);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(questions));
-}
-
 export default function App() {
   const [screen, setScreen] = useState<Screen>('start');
-  const [questions, setQuestions] = useState<Question[]>(loadQuestions);
+  const [questions, setQuestions] = useState<Question[]>(defaultQuestions);
 
   const {
     currentQuestion,
@@ -51,10 +22,6 @@ export default function App() {
     answer,
     nextQuestion,
   } = useQuiz(questions);
-
-  useEffect(() => {
-    saveQuestions(questions);
-  }, [questions]);
 
   const handleStart = () => {
     startSession();
