@@ -375,9 +375,10 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
       </div>
 
       <div className="flex-1 overflow-y-auto px-5 pb-8 max-w-xl w-full mx-auto flex flex-col gap-3">
-        {questions.map(q => (
+        {questions.map((q, i) => (
           <div key={q.id} className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <span className="text-xs font-bold text-gray-400 min-w-[2.5rem]">#{i + 1}</span>
               <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">{q.type}</span>
               <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{q.category}</span>
               {q.year && <span className="text-xs text-gray-400 ml-auto">{q.year}年</span>}
