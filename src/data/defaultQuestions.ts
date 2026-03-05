@@ -767,7 +767,7 @@ export const defaultQuestions: Question[] = [
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
-    "question": "けん制球（ピックオフ）は、投手だけでなく捕手も行うことができる。",
+    "question": "けん制球は、投手だけでなく捕手も行うことができる。",
     "choices": [
       "○",
       "×"
