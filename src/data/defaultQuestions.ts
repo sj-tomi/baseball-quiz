@@ -1469,7 +1469,7 @@ export const defaultQuestions: Question[] = [
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
-    "question": "「スタート」を切りやすい投手の動作の特徴はどれ？",
+    "question": "スタートを切りやすい投手の動作の特徴はどれ？",
     "choices": [
       "投手が速球（ストレート）を投げるとき",
       "投手のモーションが大きく足を高く上げるワインドアップのとき",
