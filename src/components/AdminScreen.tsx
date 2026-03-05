@@ -381,6 +381,7 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
               <span className="text-xs font-bold text-gray-400 min-w-[2.5rem]">#{i + 1}</span>
               <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">{q.type}</span>
               <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{q.category}</span>
+              {q.diagram && <span className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">図解あり</span>}
               {q.year && <span className="text-xs text-gray-400 ml-auto">{q.year}年</span>}
             </div>
             <p className="text-sm text-gray-800 line-clamp-2 mb-2"
