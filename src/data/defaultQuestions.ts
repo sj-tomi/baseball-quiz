@@ -605,22 +605,6 @@ export const defaultQuestions: Question[] = [
   {
     "id": "q38",
     "type": "4択",
-    "category": "律例",
-    "year": 2024,
-    "question": "タイムプレーとはどんな判定か？",
-    "choices": [
-      "タイムをかけるタイミングの判定",
-      "第3アウトの成立と走者の生還のどちらが先かを判定するプレー",
-      "時間制限ギリギリのプレーの判定",
-      "複数塁の走者が同時に塁に到達した場合の判定"
-    ],
-    "correctIndex": 1,
-    "explanation": "タイムプレーは、フォース以外の第3アウトが成立したとき、それより前に走者が本塁に生還していれば得点が認められるかどうかを判断するプレー。第3アウトと生還のどちらが先かが重要。",
-    "source": "公認野球規則"
-  },
-  {
-    "id": "q39",
-    "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
     "question": "ヒットエンドランのサインが出ているとき、バッターが空振りした場合、ランナーはどうすべき？",
@@ -635,7 +619,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q40",
+    "id": "q39",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -660,7 +644,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q41",
+    "id": "q40",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -692,7 +676,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q42",
+    "id": "q41",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -708,7 +692,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q43",
+    "id": "q42",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -722,7 +706,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q44",
+    "id": "q43",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -738,7 +722,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q45",
+    "id": "q44",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -754,7 +738,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q46",
+    "id": "q45",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -768,7 +752,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q47",
+    "id": "q46",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -784,23 +768,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q48",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "バックアップ（後方支援）の役割として正しいのはどれ？",
-    "choices": [
-      "走者が転んだときにサポートすること",
-      "送球が暴投になった際に後ろで受け止め、走者の余分な進塁を防ぐこと",
-      "審判の判定をフォローすること",
-      "スコアをつける役割"
-    ],
-    "correctIndex": 1,
-    "explanation": "野球では送球が暴投になった場合に備えて、必ず後ろに選手が「バックアップ」に入る。これにより走者の余分な進塁を防ぐことができる。特に外野手のバックアップは重要。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q49",
+    "id": "q47",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -814,7 +782,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q50",
+    "id": "q48",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -836,7 +804,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q51",
+    "id": "q49",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -852,7 +820,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q52",
+    "id": "q50",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -868,7 +836,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q53",
+    "id": "q51",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -882,7 +850,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q54",
+    "id": "q52",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -898,7 +866,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q55",
+    "id": "q53",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -912,39 +880,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q56",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「ファーストアンドサード」（1・3塁）の攻撃の主な狙いは？",
-    "choices": [
-      "1塁ランナーを盗塁で2塁に進めること",
-      "1塁ランナーの走塁で守備側の注意を引きながら、3塁ランナーの生還を狙うこと",
-      "全力でホームランを狙うこと",
-      "バッターに三振を打たせて守備側を混乱させること"
-    ],
-    "correctIndex": 1,
-    "explanation": "1・3塁の場面で1塁ランナーが走ると、守備側は「2塁に投げれば3塁ランナーが生還するかも」と悩む。この守備側の判断ミスを誘って3塁ランナーをホームに返すのが狙い。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1,
-        3
-      ],
-      "arrows": [
-        {
-          "from": 1,
-          "to": 2
-        },
-        {
-          "from": 3,
-          "to": "home"
-        }
-      ]
-    }
-  },
-  {
-    "id": "q57",
+    "id": "q54",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -960,7 +896,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q58",
+    "id": "q55",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -974,7 +910,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q59",
+    "id": "q56",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -990,7 +926,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q60",
+    "id": "q57",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1004,7 +940,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q61",
+    "id": "q58",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1020,7 +956,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q62",
+    "id": "q59",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1036,7 +972,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q63",
+    "id": "q60",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1050,7 +986,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q64",
+    "id": "q61",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1066,7 +1002,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q65",
+    "id": "q62",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1080,23 +1016,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q66",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "3ボール0ストライクの場合、走者はどうすることが多い？",
-    "choices": [
-      "すぐにスタートする",
-      "四球（フォアボール）の可能性が高いため走らずに待つ",
-      "その場でタイムをかける",
-      "サインを無視する"
-    ],
-    "correctIndex": 1,
-    "explanation": "3ボール0ストライクは投手が四球を出しやすい場面。走者が盗塁を成功させてもフォアボールで自動進塁できるため、リスクを冒してスタートを切るより待つことが多い。ただしチームの指示次第。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q67",
+    "id": "q63",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1112,7 +1032,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q68",
+    "id": "q64",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1126,7 +1046,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q69",
+    "id": "q65",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1142,7 +1062,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q70",
+    "id": "q66",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1158,23 +1078,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q71",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "ピックオフプレー（<ruby>牽制<rt>けんせい</rt></ruby>）で投手と野手が事前に決めたタイミングで動く作戦を何という？",
-    "choices": [
-      "ランエンドヒット",
-      "タイムプレー",
-      "ピックオフプレー（サインプレー）",
-      "カットオフプレー"
-    ],
-    "correctIndex": 2,
-    "explanation": "ピックオフプレー（サインプレー）は投手と内野手が事前に決めたサインとタイミングで動き、ランナーを<ruby>牽制<rt>けんせい</rt></ruby>アウトにする作戦。特に2塁への<ruby>牽制<rt>けんせい</rt></ruby>で遊撃手や二塁手と<ruby>連携<rt>れんけい</rt></ruby>して行うことが多い。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q72",
+    "id": "q67",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1188,7 +1092,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q73",
+    "id": "q68",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1204,23 +1108,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q74",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「打者走者」がシングルヒットを打った時、1塁ランナーが3塁まで進める条件として最も重要なのはどれ？",
-    "choices": [
-      "打球が強くて速いこと",
-      "打球が転がったコースと走者のスタート・走塁判断が良いこと",
-      "審判がセーフと判断すること",
-      "相手チームの選手が疲れていること"
-    ],
-    "correctIndex": 1,
-    "explanation": "走者が1塁からシングルヒットで3塁まで進むには、打球が外野のどこに飛んだか・走者の打球への反応・ベースコーチの指示など複合的な判断が必要。特に打球がどの方向に転がるかによって進塁できるかが大きく変わる。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q75",
+    "id": "q69",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1234,7 +1122,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q76",
+    "id": "q70",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1250,23 +1138,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q77",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "守備側が「シフト守備」を取る主な理由はどれ？",
-    "choices": [
-      "ランナーを惑わすため",
-      "特定の打者の打球方向の<ruby>傾向<rt>けいこう</rt></ruby>に合わせて守備位置を変えるため",
-      "投手を休ませるため",
-      "外野手を減らして内野を厚くするため"
-    ],
-    "correctIndex": 1,
-    "explanation": "シフト守備は打者ごとの打球方向の傾向（引っ張り方向が多い打者など）に合わせて守備位置を変える戦術。近年のMLBで普及し、左打者の引っ張りに合わせた「オーバーシフト」が有名。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q78",
+    "id": "q71",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1280,7 +1152,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q79",
+    "id": "q72",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1296,7 +1168,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q80",
+    "id": "q73",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1317,7 +1189,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q81",
+    "id": "q74",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1331,23 +1203,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q82",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「フォースバント」とはどんな場面で使われるか？",
-    "choices": [
-      "無死1塁でランナーを2塁へ進める場面",
-      "2アウトで長打が欲しい場面",
-      "無死満塁などで全てのランナーを1塁送るフォースアウトを防ぐ場面",
-      "捕手への送球を防ぐ場面"
-    ],
-    "correctIndex": 0,
-    "explanation": "フォースバント（犠牲バント）の代表的場面は無死1塁。バントでランナーを2塁に進め、1点を取りやすくする。無死1・2塁で2塁・3塁に進める場面でも使われる。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q83",
+    "id": "q75",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1372,7 +1228,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q84",
+    "id": "q76",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1388,7 +1244,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q85",
+    "id": "q77",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1404,7 +1260,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q86",
+    "id": "q78",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1418,7 +1274,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q87",
+    "id": "q79",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1434,7 +1290,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q88",
+    "id": "q80",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1456,21 +1312,7 @@ export const defaultQuestions: Question[] = [
     }
   },
   {
-    "id": "q89",
-    "type": "○×",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "攻撃側の監督がサインを出すのは主にベンチからで、コーチを経由して選手に伝えることが多い。",
-    "choices": [
-      "○",
-      "×"
-    ],
-    "correctIndex": 0,
-    "explanation": "監督はベンチ（ダッグアウト）からサインを出し、3塁コーチャーや1塁コーチャーを経由してランナーや打者にサインを伝えるのが一般的。監督が直接サインを出すことも多く、体の動作（帽子・顔・腕など）でサインを送る。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q90",
+    "id": "q81",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1486,7 +1328,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q91",
+    "id": "q82",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1502,37 +1344,7 @@ export const defaultQuestions: Question[] = [
     "source": "公認野球規則"
   },
   {
-    "id": "q92",
-    "type": "○×",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「守備シフト」（アライメント）で外野手を極端に右側に寄せる場合、レフト方向への安打が出やすくなる。",
-    "choices": [
-      "○",
-      "×"
-    ],
-    "correctIndex": 0,
-    "explanation": "オーバーシフトなど守備シフトで右側に外野手が集まると、左側（レフト方向）の守備が手薄になるため、流し打ちでレフトへの安打が出やすくなる。これを利用して逆方向に打つのが攻撃側の対策。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q93",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "少年野球でよく使われる「サインの出し方」として正しいのはどれ？",
-    "choices": [
-      "声で大きく呼びかける",
-      "監督・コーチが帽子や顔・腕・体を触ることで球種や作戦を伝える",
-      "走者だけがサインを出す",
-      "主審に作戦を伝える"
-    ],
-    "correctIndex": 1,
-    "explanation": "野球のサインは相手チームに読まれないよう、監督やコーチが帽子・顔・腕・腰などを触る動作を組み合わせて伝えるのが一般的。「サイン盗み」を防ぐために複雑なサイン体系が使われる。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q94",
+    "id": "q83",
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1546,7 +1358,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q95",
+    "id": "q84",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1562,37 +1374,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q96",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「サインの消し方（キャンセル）」として代表的なものはどれ？",
-    "choices": [
-      "タイムをかけて審判に告げる",
-      "あらかじめ決めた特定の動作（例：帽子のつばを触る）でサインを取り消す「消しサイン」",
-      "選手が首を振る",
-      "監督が大きな声を出す"
-    ],
-    "correctIndex": 1,
-    "explanation": "サインを出した後に取り消すときは「消しサイン」と呼ばれる特定の動作（例：帽子のつばを触る、胸を叩くなど）を使ってサインをキャンセルする。消しサインを確認しないと、キャンセルされたサインで選手が動いてしまうミスが起きる。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q97",
-    "type": "○×",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "得点差が大きく負けている場面では、犠牲バントを使って1点を取る作戦より、強攻策でビッグイニングを狙うほうが有効なことが多い。",
-    "choices": [
-      "○",
-      "×"
-    ],
-    "correctIndex": 0,
-    "explanation": "大差で負けている場面では、犠牲バントで1点を取るより、ビッグイニング（複数得点）を狙って強攻策を取る方が試合をひっくり返せる可能性が高い。犠牲バントは1点が欲しい僅差の場面で最も効果的な戦術。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q98",
+    "id": "q85",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1608,7 +1390,7 @@ export const defaultQuestions: Question[] = [
     "source": "野球戦術の基本"
   },
   {
-    "id": "q99",
+    "id": "q86",
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
@@ -1621,22 +1403,6 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "盗塁成功のカギは①走者がスタートを切るタイミング（投手の足が動いた瞬間）②走者の走力（足の速さ）③投手の投球動作の読み（クイックの速さ・軸足の動き）④捕手の肩の強さ。特にスタートのタイミングが最も重要。",
-    "source": "野球戦術の基本"
-  },
-  {
-    "id": "q100",
-    "type": "4択",
-    "category": "サイン・戦術",
-    "year": 2024,
-    "question": "「バントエンドラン」とはどんなプレーか？",
-    "choices": [
-      "打者がバントし、ランナーも同時にスタートを切ることで複数の塁への進塁を狙うプレー",
-      "走者が走った後にバントする",
-      "バントとヒットエンドランを交互に使う作戦",
-      "全員が同時にバントをする"
-    ],
-    "correctIndex": 0,
-    "explanation": "バントエンドランはランナーが投球と同時にスタートを切り、打者がバントをすることで、ランナーが通常のバントより1つ余分に進塁することを狙うプレー。例えば1塁ランナーが2塁を回って3塁まで進める場面などで使われる。",
     "source": "野球戦術の基本"
   },
   {
