@@ -357,7 +357,7 @@ export const defaultQuestions: Question[] = [
     "type": "4択",
     "category": "ルール・基本知識",
     "year": 2024,
-    "question": "犠牲フライ（サクリファイスフライ）が成立するのは、何アウトのときか？",
+    "question": "犠牲フライが成立するのは、何アウトのときか？",
     "choices": [
       "アウトカウントに関係なく成立する",
       "0アウトのときだけ",
