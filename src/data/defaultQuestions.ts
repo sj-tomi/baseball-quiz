@@ -1264,7 +1264,7 @@ export const defaultQuestions: Question[] = [
     "type": "○×",
     "category": "サイン・戦術",
     "year": 2024,
-    "question": "「捕手のサイン」は投手だけに向けて出すものである。",
+    "question": "捕手のサインは投手だけに向けて出すものである。",
     "choices": [
       "○",
       "×"
