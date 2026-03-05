@@ -28,7 +28,7 @@ export const defaultQuestions: Question[] = [
       "×"
     ],
     "correctIndex": 1,
-    "explanation": "2022年の<ruby>改訂<rt>かいてい</rt></ruby>により、学童部の試合は6イニング<ruby>制<rt>せい</rt></ruby>・時間<ruby>制限<rt>せいげん</rt></ruby>1時間30分が<ruby>採用<rt>さいよう</rt></ruby>されている。7回<ruby>制<rt>せい</rt></ruby>ではない。",
+    "explanation": "2022年の<ruby>改訂<rt>かいてい</rt></ruby>により、学童部の試合は6イニング<ruby>制<rt>せい</rt></ruby>・時間<ruby>制限<rt>せいげん</rt></ruby>1時間30分が採用されている。7回<ruby>制<rt>せい</rt></ruby>ではない。",
     "source": "JSBB 令和4年度学童野球新ルール"
   },
   {
