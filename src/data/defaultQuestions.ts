@@ -55,7 +55,7 @@ export const defaultQuestions: Question[] = [
     "question": "2026年から新たに<ruby>導入<rt>どうにゅう</rt></ruby>された投球数<ruby>制限<rt>せいげん</rt></ruby>はどれ？",
     "choices": [
       "1試合50球以内",
-      "連続2日間での登板<ruby>禁止<rt>きんし</rt></ruby>",
+      "連続2日間での登板禁止",
       "1週間210球以内（4年生以下は180球以内）",
       "1週間350球以内"
     ],
