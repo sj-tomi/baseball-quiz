@@ -68,13 +68,13 @@ export const defaultQuestions: Question[] = [
     "type": "○×",
     "category": "ルール・基本知識",
     "year": 2025,
-    "question": "学童部では、2025年から一般用バットのうち打球部にウレタン等の<ruby>弾性体<rt>だんせいたい</rt></ruby>を取り付けたバットが<ruby>禁止<rt>きんし</rt></ruby>された。",
+    "question": "学童部では、2025年から一般用バットのうち打球部にウレタン等の<ruby>弾性体<rt>だんせいたい</rt></ruby>を取り付けたバットが禁止された。",
     "choices": [
       "○",
       "×"
     ],
     "correctIndex": 0,
-    "explanation": "安全面を考慮し、2025年より学童部では一般用バットのうちウレタン・スポンジ等の<ruby>弾性体<rt>だんせいたい</rt></ruby>を打球部に取り付けたバットの使用が<ruby>禁止<rt>きんし</rt></ruby>。木製・金属製・カーボン製・<ruby>複合<rt>ふくごう</rt></ruby>バットは引き続き使用可能。",
+    "explanation": "安全面を考慮し、2025年より学童部では一般用バットのうちウレタン・スポンジ等の<ruby>弾性体<rt>だんせいたい</rt></ruby>を打球部に取り付けたバットの使用が禁止。木製・金属製・カーボン製・<ruby>複合<rt>ふくごう</rt></ruby>バットは引き続き使用可能。",
     "source": "JSBB 全軟野連発第366-3号（令和5年12月20日）"
   },
   {
@@ -85,8 +85,8 @@ export const defaultQuestions: Question[] = [
     "question": "2029年以降、バット使用<ruby>制限<rt>せいげん</rt></ruby>が拡大される対象は？",
     "choices": [
       "学童部のみ",
-      "<ruby>少年部<rt>しょうねんぶ</rt></ruby>（中学生）のみ",
-      "学童部・<ruby>少年部<rt>しょうねんぶ</rt></ruby>の両方",
+      "少年部（中学生）のみ",
+      "学童部・少年部の両方",
       "一般（大人）も含む全カテゴリ"
     ],
     "correctIndex": 2,
