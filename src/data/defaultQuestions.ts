@@ -498,13 +498,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "インフィールドフライはランナー1・2塁または満塁の状況で、0アウトか1アウトのとき、内野手が普通の守備をすれば捕球できるフライに適用される。守備側の故意落球によるダブルプレーを防ぐためのルール。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        1,
-        2
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q32",
