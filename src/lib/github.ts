@@ -29,14 +29,14 @@ function generateQuestionsTs(questions: Question[]): string {
 }
 
 export function getGithubToken(): string {
-  return localStorage.getItem(GITHUB_TOKEN_KEY) ?? '';
+  return sessionStorage.getItem(GITHUB_TOKEN_KEY) ?? '';
 }
 
 export function saveGithubToken(token: string): void {
   if (token) {
-    localStorage.setItem(GITHUB_TOKEN_KEY, token);
+    sessionStorage.setItem(GITHUB_TOKEN_KEY, token);
   } else {
-    localStorage.removeItem(GITHUB_TOKEN_KEY);
+    sessionStorage.removeItem(GITHUB_TOKEN_KEY);
   }
 }
 
