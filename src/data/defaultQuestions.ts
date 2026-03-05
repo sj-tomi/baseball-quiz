@@ -234,13 +234,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "ボークが宣告されると、塁上の全ランナーが1つずつ進塁する。打者にはボールが1つ加わる。投手がセットポジションで静止しなかったり、投球途中で止めた場合などに宣告される。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        1,
-        3
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q16",
@@ -270,13 +264,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "振り逃げは「1塁が空いているとき（アウトカウント問わず）」または「2アウトのとき（1塁にランナーがいても）」に捕手が3ストライク目を正規に捕球しなかった場合に成立。1塁にランナーがいて0・1アウトのときは成立しない。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        2,
-        3
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q18",
@@ -450,12 +438,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "アピールプレーは守備側が審判に走者の塁空過やタッチアップ不履行などの違反を指摘し、アウトを要求するプレー。次のプレーが始まる前（投球前など）に行う必要がある。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        3
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q28",
@@ -587,18 +570,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "コリジョンルール（本塁での<ruby>衝突防止<rt>しょうとつぼうし</rt></ruby>規則）により、捕手はボールを保持していない状態で走者の走路を塞いではならない。違反するとオブストラクション（走塁妨害）が宣告される。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        3
-      ],
-      "arrows": [
-        {
-          "from": 3,
-          "to": "home"
-        }
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q36",
@@ -628,12 +600,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "走者が内野を通過していないフェアの打球に当たると、その走者はアウト。ただし内野手（投手を除く）を通過した後の打球に当たった場合はインプレーが続く。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        2
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q38",
@@ -649,18 +616,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "タイムプレーは、フォース以外の第3アウトが成立したとき、それより前に走者が本塁に生還していれば得点が認められるかどうかを判断するプレー。第3アウトと生還のどちらが先かが重要。",
-    "source": "公認野球規則",
-    "diagram": {
-      "runners": [
-        3
-      ],
-      "arrows": [
-        {
-          "from": 3,
-          "to": "home"
-        }
-      ]
-    }
+    "source": "公認野球規則"
   },
   {
     "id": "q39",
@@ -676,18 +632,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "ヒットエンドランはランナーがスタートを切ると同時にバッターが必ず打つ約束のプレー。バッターが空振りしてもランナーは走り続けるしかない。捕手の送球と走者の速さの勝負になる。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1
-      ],
-      "arrows": [
-        {
-          "from": 1,
-          "to": 2
-        }
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q40",
@@ -920,18 +865,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "前進守備は1点も与えられない場面（3塁にランナーがいる場合など）で内野手が前に守り、本塁でのタッグアウトを狙う守備<ruby>戦術<rt>せんじゅつ</rt></ruby>。ヒットの可能性は上がるが、本塁をアウトにできる可能性も上がる。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        3
-      ],
-      "arrows": [
-        {
-          "from": 3,
-          "to": "home"
-        }
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q53",
@@ -1175,13 +1109,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "バントシフトは攻撃側がバントをしてくると予想される場面（特にランナーが1塁や1・2塁のとき）に三塁手や一塁手が前に出て構える守備<ruby>陣形<rt>じんけい</rt></ruby>。バントを処理して先の塁でアウトにしやすくする。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1,
-        2
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q68",
@@ -1243,12 +1171,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "ピックオフプレー（サインプレー）は投手と内野手が事前に決めたサインとタイミングで動き、ランナーを<ruby>牽制<rt>けんせい</rt></ruby>アウトにする作戦。特に2塁への<ruby>牽制<rt>けんせい</rt></ruby>で遊撃手や二塁手と<ruby>連携<rt>れんけい</rt></ruby>して行うことが多い。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        2
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q72",
@@ -1278,12 +1201,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "ランナーが2塁にいると投手板の後ろからサインが見えやすくなる。そのため捕手は複数のサインを組み合わせた「複合サイン」に切り替えて、サインを読まれにくくする工夫をする。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        2
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q74",
@@ -1426,18 +1344,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "フォースバント（犠牲バント）の代表的場面は無死1塁。バントでランナーを2塁に進め、1点を取りやすくする。無死1・2塁で2塁・3塁に進める場面でも使われる。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1
-      ],
-      "arrows": [
-        {
-          "from": 1,
-          "to": 2
-        }
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q83",
@@ -1478,12 +1385,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "ワインドアップで足を大きく高く上げる投手はモーションが大きい分、投球動作の時間が長くなる。そのため走者がスタートを切りやすく盗塁されやすい。盗塁の多い走者を出した後はセットポジションに切り替える投手が多い。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q85",
@@ -1657,12 +1559,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "ウエストボール（外し球）は捕手が立ち上がって捕りやすい高い位置にわざとボールを外して投げること。主に盗塁を警戒する場面や、スクイズを外す場面（スクイズ外し）で使われる。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        3
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q96",
@@ -1708,12 +1605,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "前進守備の最大のデメリットは、内野手が前に出る分、後ろの守備範囲が広がり、通常ならアウトにできるゴロがヒットになりやすくなること。「ゲッツーが取れなくなる」という側面もある。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        3
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q99",
@@ -1729,18 +1621,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "盗塁成功のカギは①走者がスタートを切るタイミング（投手の足が動いた瞬間）②走者の走力（足の速さ）③投手の投球動作の読み（クイックの速さ・軸足の動き）④捕手の肩の強さ。特にスタートのタイミングが最も重要。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1
-      ],
-      "arrows": [
-        {
-          "from": 1,
-          "to": 2
-        }
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q100",
@@ -1756,18 +1637,7 @@ export const defaultQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "バントエンドランはランナーが投球と同時にスタートを切り、打者がバントをすることで、ランナーが通常のバントより1つ余分に進塁することを狙うプレー。例えば1塁ランナーが2塁を回って3塁まで進める場面などで使われる。",
-    "source": "野球戦術の基本",
-    "diagram": {
-      "runners": [
-        1
-      ],
-      "arrows": [
-        {
-          "from": 1,
-          "to": 3
-        }
-      ]
-    }
+    "source": "野球戦術の基本"
   },
   {
     "id": "q_diagram_force",
