@@ -1720,7 +1720,7 @@ export const defaultQuestions: Question[] = [
     "type": "4択",
     "category": "サイン・戦術",
     "year": 2024,
-    "question": "「ストレートスチール」（単純盗<ruby>塁<rt>るい</rt></ruby>）を成功させるために最も重要な要素はどれ？",
+    "question": "盗塁を成功させるために最も重要な要素はどれ？",
     "choices": [
       "打者の打力",
       "走者のスタートのタイミングと走力、および投手の投球動作のクセを読むこと",
@@ -1728,7 +1728,7 @@ export const defaultQuestions: Question[] = [
       "グラウンドコンディション"
     ],
     "correctIndex": 1,
-    "explanation": "盗<ruby>塁<rt>るい</rt></ruby>成功のカギは①走者がスタートを切るタイミング（投手の足が動いた瞬間）②走者の走力（足の速さ）③投手の投球動作の読み（クイックの速さ・軸足の動き）④<ruby>捕手<rt>ほしゅ</rt></ruby>の肩の強さ。特にスタートのタイミングが最も重要。",
+    "explanation": "盗塁成功のカギは①走者がスタートを切るタイミング（投手の足が動いた瞬間）②走者の走力（足の速さ）③投手の投球動作の読み（クイックの速さ・軸足の動き）④<ruby>捕手<rt>ほしゅ</rt></ruby>の肩の強さ。特にスタートのタイミングが最も重要。",
     "source": "野球戦術の<ruby>基本<rt>きほん</rt></ruby>",
     "diagram": {
       "runners": [
