@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Question, QuestionType, Category } from '../types';
+import FieldDiagram from './FieldDiagram';
 import {
   getGithubToken,
   saveGithubToken,
@@ -265,6 +266,15 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
               placeholder="例: JSBB公式ルール2026年版"
               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-400" />
           </div>
+          {/* Diagram preview */}
+          {formData.diagram && (
+            <div>
+              <label className="block text-xs font-bold text-gray-500 mb-2">図解プレビュー</label>
+              <div className="bg-white border border-gray-200 rounded-xl p-3">
+                <FieldDiagram {...formData.diagram} />
+              </div>
+            </div>
+          )}
           {/* Year */}
           <div>
             <label className="block text-xs font-bold text-gray-500 mb-2">導入年</label>
