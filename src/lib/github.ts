@@ -103,7 +103,7 @@ export async function syncQuestionsToGitHub(
   branch: string
 ): Promise<void> {
   // 両ファイルを並列取得
-  const [questionsFile, appFile] = await Promise.all([
+  const [, appFile] = await Promise.all([
     getFileData(token, branch, QUESTIONS_FILE),
     getFileData(token, branch, APP_FILE),
   ]);
@@ -115,11 +115,11 @@ export async function syncQuestionsToGitHub(
     `const QUESTIONS_VERSION = '${newVersion}'`
   );
 
-  // questions更新 → App.tsx更新（直列：コンフリクト回避）
-  await putFile(token, branch, QUESTIONS_FILE, newQuestionsContent, questionsFile.sha, '管理画面から問題を更新');
+  // PUT直前に最新SHAを再取得してからコミット（SHAミスマッチ防止）
+  const latestQuestions = await getFileData(token, branch, QUESTIONS_FILE);
+  await putFile(token, branch, QUESTIONS_FILE, newQuestionsContent, latestQuestions.sha, '管理画面から問題を更新');
   if (newAppContent !== appFile.content) {
-    // App.tsx更新後のSHAを取得してからPUT
-    const updatedApp = await getFileData(token, branch, APP_FILE);
-    await putFile(token, branch, APP_FILE, newAppContent, updatedApp.sha, `QUESTIONS_VERSIONを${newVersion}に更新`);
+    const latestApp = await getFileData(token, branch, APP_FILE);
+    await putFile(token, branch, APP_FILE, newAppContent, latestApp.sha, `QUESTIONS_VERSIONを${newVersion}に更新`);
   }
 }
