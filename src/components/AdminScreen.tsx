@@ -1,5 +1,14 @@
 import { useState } from 'react';
 import type { Question, QuestionType, Category } from '../types';
+import {
+  getGithubToken,
+  saveGithubToken,
+  getGithubBranch,
+  saveGithubBranch,
+  syncQuestionsToGitHub,
+  REPO_OWNER,
+  REPO_NAME,
+} from '../lib/github';
 
 // パスワードは固定
 const ADMIN_PASSWORD = 'kndreams23';
@@ -12,6 +21,7 @@ interface AdminScreenProps {
 }
 
 type AdminView = 'auth' | 'list' | 'form';
+type SyncStatus = 'idle' | 'syncing' | 'success' | 'error';
 
 const CATEGORIES: Category[] = ['ルール・基本知識', '律例', 'サイン・戦術'];
 const TYPES: QuestionType[] = ['4択', '○×'];
@@ -36,6 +46,13 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
   const [formData, setFormData] = useState<Omit<Question, 'id'>>(emptyQuestion());
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  // GitHub連携
+  const [githubToken, setGithubTokenState] = useState(getGithubToken);
+  const [githubBranch, setGithubBranchState] = useState(getGithubBranch);
+  const [showGithubSettings, setShowGithubSettings] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
+  const [syncError, setSyncError] = useState('');
 
   const handleLogin = () => {
     if (password === ADMIN_PASSWORD) {
@@ -82,23 +99,47 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
     });
   };
 
+  const syncToGitHub = async (updated: Question[]) => {
+    const token = getGithubToken();
+    const branch = getGithubBranch();
+    if (!token) return;
+    setSyncStatus('syncing');
+    setSyncError('');
+    try {
+      await syncQuestionsToGitHub(updated, token, branch);
+      setSyncStatus('success');
+      setTimeout(() => setSyncStatus('idle'), 4000);
+    } catch (e) {
+      setSyncStatus('error');
+      setSyncError(e instanceof Error ? e.message : '不明なエラー');
+    }
+  };
+
   const handleSave = () => {
     if (!formData.question.trim()) { alert('問題文を入力してください'); return; }
     if (!formData.source.trim()) { alert('出典を入力してください'); return; }
     if (formData.type === '4択' && formData.choices.some(c => !c.trim())) {
       alert('選択肢をすべて入力してください'); return;
     }
-    if (editingQuestion) {
-      onQuestionsChange(questions.map(q => q.id === editingQuestion.id ? { ...formData, id: editingQuestion.id } : q));
-    } else {
-      onQuestionsChange([...questions, { ...formData, id: `q_${Date.now()}` }]);
-    }
+    const updated = editingQuestion
+      ? questions.map(q => q.id === editingQuestion.id ? { ...formData, id: editingQuestion.id } : q)
+      : [...questions, { ...formData, id: `q_${Date.now()}` }];
+    onQuestionsChange(updated);
+    syncToGitHub(updated);
     setView('list');
   };
 
   const handleDelete = (id: string) => {
-    onQuestionsChange(questions.filter(q => q.id !== id));
+    const updated = questions.filter(q => q.id !== id);
+    onQuestionsChange(updated);
+    syncToGitHub(updated);
     setDeleteConfirm(null);
+  };
+
+  const handleSaveGithubSettings = () => {
+    saveGithubToken(githubToken);
+    saveGithubBranch(githubBranch);
+    setShowGithubSettings(false);
   };
 
   // ── Auth ──
@@ -234,6 +275,11 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
           <button className="tap-btn w-full bg-green-600 text-white font-bold text-base rounded-2xl py-4 shadow-md shadow-green-100" onClick={handleSave}>
             {editingQuestion ? '更新する' : '追加する'}
           </button>
+          {!getGithubToken() && (
+            <p className="text-xs text-orange-500 text-center">
+              ※ GitHub連携が未設定のため、ローカル保存のみになります
+            </p>
+          )}
         </div>
       </div>
     );
@@ -248,14 +294,84 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
         <button className="text-gray-400 text-xs hover:text-gray-600" onClick={handleLogout}>ログアウト</button>
       </div>
 
-      <div className="px-5 py-3 flex justify-between items-center max-w-xl w-full mx-auto">
-        <p className="text-sm text-gray-500">
-          問題数：<strong className="text-gray-800">{questions.length}</strong>問
-          {questions.length < 20 && <span className="text-orange-500 text-xs ml-2">（20問以上推奨）</span>}
-        </p>
-        <button className="tap-btn bg-green-600 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-sm" onClick={openNew}>
-          ＋ 追加
-        </button>
+      {/* GitHub連携ステータス */}
+      {syncStatus !== 'idle' && (
+        <div className={`px-5 py-2.5 text-xs font-medium flex items-center gap-2
+          ${syncStatus === 'syncing' ? 'bg-blue-50 text-blue-600' : ''}
+          ${syncStatus === 'success' ? 'bg-green-50 text-green-700' : ''}
+          ${syncStatus === 'error' ? 'bg-red-50 text-red-600' : ''}`}>
+          {syncStatus === 'syncing' && <><span className="animate-spin">⟳</span> GitHubに同期中...</>}
+          {syncStatus === 'success' && <>✓ GitHubに同期しました</>}
+          {syncStatus === 'error' && <>✗ 同期エラー: {syncError}</>}
+        </div>
+      )}
+
+      <div className="px-5 py-3 max-w-xl w-full mx-auto flex flex-col gap-3">
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-gray-500">
+            問題数：<strong className="text-gray-800">{questions.length}</strong>問
+            {questions.length < 20 && <span className="text-orange-500 text-xs ml-2">（20問以上推奨）</span>}
+          </p>
+          <button className="tap-btn bg-green-600 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-sm" onClick={openNew}>
+            ＋ 追加
+          </button>
+        </div>
+
+        {/* GitHub設定パネル */}
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <button
+            className="w-full px-4 py-3 flex items-center justify-between text-sm"
+            onClick={() => setShowGithubSettings(v => !v)}
+          >
+            <span className="flex items-center gap-2 font-medium text-gray-700">
+              <span>🔗</span>
+              GitHub連携
+              {getGithubToken()
+                ? <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full">設定済</span>
+                : <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">未設定</span>
+              }
+            </span>
+            <span className="text-gray-400 text-xs">{showGithubSettings ? '▲' : '▼'}</span>
+          </button>
+
+          {showGithubSettings && (
+            <div className="px-4 pb-4 flex flex-col gap-3 border-t border-gray-50">
+              <p className="text-xs text-gray-400 mt-3">
+                リポジトリ: <strong className="text-gray-600">{REPO_OWNER}/{REPO_NAME}</strong>
+              </p>
+              <div>
+                <label className="block text-xs font-bold text-gray-500 mb-1">Personal Access Token</label>
+                <input
+                  type="password"
+                  value={githubToken}
+                  onChange={e => setGithubTokenState(e.target.value)}
+                  placeholder="ghp_xxxxxxxxxxxx"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-gray-500 mb-1">ブランチ</label>
+                <input
+                  type="text"
+                  value={githubBranch}
+                  onChange={e => setGithubBranchState(e.target.value)}
+                  placeholder="main"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+              <button
+                className="w-full bg-gray-800 text-white text-sm font-bold rounded-xl py-2.5"
+                onClick={handleSaveGithubSettings}
+              >
+                保存
+              </button>
+              <p className="text-xs text-gray-400">
+                保存・削除のたびに自動でGitHubのファイルを更新します。
+                PATには <code className="bg-gray-100 px-1 rounded">repo</code> スコープが必要です。
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-5 pb-8 max-w-xl w-full mx-auto flex flex-col gap-3">
