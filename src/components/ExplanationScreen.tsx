@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Question } from '../types';
 import FieldDiagram from './FieldDiagram';
 
@@ -11,6 +12,8 @@ interface ExplanationScreenProps {
 }
 
 export default function ExplanationScreen({ question, isCorrect, selectedIndex, isLast, onNext, onQuit }: ExplanationScreenProps) {
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
+
   return (
     <div className="flex flex-col min-h-[100dvh] bg-white">
       {/* Result banner */}
@@ -74,7 +77,7 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
           {!isLast && (
             <button
               className="tap-btn py-4 px-4 border border-gray-200 text-gray-500 font-medium text-sm rounded-2xl hover:bg-gray-50"
-              onClick={onQuit}
+              onClick={() => setShowQuitConfirm(true)}
             >
               やめる
             </button>
@@ -87,6 +90,28 @@ export default function ExplanationScreen({ question, isCorrect, selectedIndex, 
           </button>
         </div>
       </div>
+      {showQuitConfirm && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-6">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-xs shadow-xl">
+            <p className="text-base font-bold text-gray-800 text-center mb-1">クイズをやめますか？</p>
+            <p className="text-sm text-gray-400 text-center mb-5">途中の結果は残りません</p>
+            <div className="flex gap-3">
+              <button
+                className="flex-1 py-3 border border-gray-200 rounded-xl text-gray-600 font-medium text-sm hover:bg-gray-50"
+                onClick={() => setShowQuitConfirm(false)}
+              >
+                続ける
+              </button>
+              <button
+                className="flex-1 py-3 bg-red-500 text-white rounded-xl font-bold text-sm hover:bg-red-600"
+                onClick={onQuit}
+              >
+                やめる
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
