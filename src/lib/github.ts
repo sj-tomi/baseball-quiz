@@ -41,7 +41,7 @@ export function saveGithubToken(token: string): void {
 }
 
 export function getGithubBranch(): string {
-  return localStorage.getItem(GITHUB_BRANCH_KEY) ?? 'main';
+  return localStorage.getItem(GITHUB_BRANCH_KEY) ?? 'claude/baseball-quiz-app-x0VFK';
 }
 
 export function saveGithubBranch(branch: string): void {

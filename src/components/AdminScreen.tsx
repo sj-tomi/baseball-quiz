@@ -355,7 +355,7 @@ export default function AdminScreen({ questions, onQuestionsChange, onBack }: Ad
                   type="text"
                   value={githubBranch}
                   onChange={e => setGithubBranchState(e.target.value)}
-                  placeholder="main"
+                  placeholder="claude/baseball-quiz-app-x0VFK"
                   className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
                 />
               </div>
