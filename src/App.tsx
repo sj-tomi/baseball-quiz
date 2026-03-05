@@ -11,7 +11,7 @@ import AdminScreen from './components/AdminScreen';
 const STORAGE_KEY = 'baseball_quiz_questions';
 const VERSION_KEY = 'baseball_quiz_version';
 // デフォルト問題を更新したらこの番号を上げる
-const QUESTIONS_VERSION = '4';
+const QUESTIONS_VERSION = '1772675432788';
 
 function loadQuestions(): Question[] {
   try {
